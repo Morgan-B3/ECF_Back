@@ -91,7 +91,7 @@
 
         <div class="@if($number%2==0) bg-sky-200 @else bg-gray-200  @endif flex items-center justify-center text-2xl gap-4">
             <a href="/{{$matela->id}}/modifier" title="Modifier" class="block text-orange-600 hover:text-white w-fit hover:bg-orange-400 rounded-lg px-3 py-2"><i class="fa-regular fa-pen-to-square "></i></a>
-            <a href="/{{$matela->id}}/supprimer" title="Supprimer" class="block text-red-600 hover:text-white w-fit hover:bg-red-400 rounded-lg px-3 py-2"><i class="fa-solid fa-trash-can"></i></a>
+            <a href="/{{$matela->id}}/supprimer" title="Supprimer" class="block text-red-600 hover:text-white w-fit hover:bg-red-400 rounded-lg px-3 py-2" onclick='return confirm("Êtes-vous sûr(e) de vouloir supprimer le matelas {{$matela->name}}?")'><i class="fa-solid fa-trash-can"></i></a>
         </div>
 
         @php

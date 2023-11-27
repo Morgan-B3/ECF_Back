@@ -34,6 +34,51 @@ class DatabaseSeeder extends Seeder
             Largeur::factory()->create(['value' => $largeur]);
         }
 
+        $mattress_1 = Matelas::factory()->create([
+            'name' => 'Matelas Confort+',
+            'price' => 759,
+            'discount' => 25,
+            'discounted_price' => Matelas::discount(759, 25),
+        ]);
+        $mattress_1->brand()->attach(1);
+        $mattress_1->longueur()->attach(2);
+        $mattress_1->largeur()->attach(2);
+
+        
+        $mattress_2 = Matelas::factory()->create([
+            'name' => 'Matelas Assurance',
+            'price' => 809,
+            'discount' => 15,
+            'discounted_price' => Matelas::discount(809, 15),
+        ]);
+        $mattress_2->brand()->attach(2);
+        $mattress_2->longueur()->attach(2);
+        $mattress_2->largeur()->attach(2);
+
+
+        $mattress_3 = Matelas::factory()->create([
+            'name' => 'Matelas Essentiel',
+            'price' => 759,
+            'discount' => 25,
+            'discounted_price' => Matelas::discount(759, 25),
+        ]);
+        $mattress_3->brand()->attach(3);
+        $mattress_3->longueur()->attach(2);
+        $mattress_3->largeur()->attach(5);
+
+
+        $mattress_4 = Matelas::factory()->create([
+            'name' => 'Matelas Prestige',
+            'price' => 1019,
+            'discount' => null,
+            'discounted_price' => Matelas::discount(1019, null),
+        ]);
+        $mattress_4->brand()->attach(1);
+        $mattress_4->longueur()->attach(3);
+        $mattress_4->largeur()->attach(6);
+
+
+
         $matelas = Matelas::factory(10)->create();
 
         foreach ($matelas as $matela){
@@ -41,6 +86,7 @@ class DatabaseSeeder extends Seeder
             $matela->longueur()->attach(rand(1,5));
             $matela->largeur()->attach(rand(1,8));
         }
+
 
     }
 }

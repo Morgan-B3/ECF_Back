@@ -1,16 +1,21 @@
+
 @extends('layouts.app')
 
 @section('content')
 
+{{-- Affichage du message de session --}}
 @if (session('message'))
 <p class="rounded w-fit mx-auto shadow text-green-800 bg-green-300 text-center p-2 my-6">
     {{ session('message') }}
 </p>
 @endif
 
+
 <h1 class="text-3xl underline mx-auto w-fit font-bold">CATALOGUE</h1>
+
 <a href="/ajouter" class="block mx-auto bg-green-400 rounded-lg px-4 py-2 w-fit my-4 hover:bg-green-500 hover:text-white ">Ajouter un matelas</a>
 
+{{-- Filtre --}}
 <form action="">
     <div class="flex justify-between items-center mb-8">
         <div>
@@ -48,11 +53,15 @@
     </div>
 </form>
 
+
+{{-- Liste de matelas --}}
 <div class="grid grid-cols-7 gap-2 bg-white mb-8">
+    {{-- pour l'alternance de couleur du fond --}}
     @php
         $number = 0
     @endphp
 
+    {{-- entêtes des colonnes (option de tri) --}}
     <a href="/tri/id">
         <div class= "bg-gray-400 text-white text-center font-bold py-2 hover:bg-gray-500 flex justify-center items-center gap-2">
             <p>ID</p> <i class="fa-solid fa-angle-down"></i>
@@ -91,6 +100,8 @@
         <p>Actions</p>
     </div>
     
+
+    {{-- liste de matelas --}}
     @foreach ($matelas as $matela)
 
         <div class= "@if($number%2==0) bg-sky-200 @else bg-gray-200  @endif flex flex-col items-center justify-center gap-4">
@@ -125,11 +136,13 @@
             @endif    
         </div>
 
+        {{-- boutons de modifiation / suppression --}}
         <div class="@if($number%2==0) bg-sky-200 @else bg-gray-200  @endif flex items-center justify-center text-2xl gap-4">
             <a href="/{{$matela->id}}/modifier" title="Modifier" class="block text-orange-600 hover:text-white w-fit hover:bg-orange-400 rounded-lg px-3 py-2"><i class="fa-regular fa-pen-to-square "></i></a>
-            <a href="/{{$matela->id}}/supprimer" title="Supprimer" class="block text-red-600 hover:text-white w-fit hover:bg-red-400 rounded-lg px-3 py-2"><i class="fa-solid fa-trash-can"></i></a>
+            <a href="/{{$matela->id}}/supprimer" title="Supprimer" class="block text-red-600 hover:text-white w-fit hover:bg-red-400 rounded-lg px-3 py-2" onclick='return confirm("Êtes-vous sûr(e) de vouloir supprimer le matelas {{$matela->name}}?")'><i class="fa-solid fa-trash-can"></i></a>
         </div>
 
+        {{-- pour l'alternance de couleur du fond --}}
         @php
             $number++ 
         @endphp
