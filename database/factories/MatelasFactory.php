@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Matelas;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,12 +17,13 @@ class MatelasFactory extends Factory
      */
     public function definition(): array
     {
-        
+        $price =  fake()->numberBetween(750,1200);
+        $discount = fake()->randomElement([null, fake()->numberBetween(5,20)]);
         return [
             'name' => fake()->sentence(1),
-            'price' => fake()->numberBetween(750,1200),
-            'discount' => fake()->randomElement([null, fake()->numberBetween(5,20)]),
-            'discounted_price' => null,
+            'price' => $price,
+            'discount' => $discount,
+            'discounted_price' => Matelas::discount($price, $discount),
             'image' => fake()->randomElement(['/images/mattress_1.jpg','/images/mattress_2.jpg','/images/mattress_3.jpg','/images/mattress_4.jpg',]),
         ];
     }

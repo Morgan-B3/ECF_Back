@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->float('price');
             $table->integer('discount')->nullable();
-            $table->float('discounted_price')->nullable();
+            $table->float('discounted_price', 6,2)->nullable();
             $table->string('image');
             $table->timestamps();
         });

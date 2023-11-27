@@ -54,8 +54,8 @@
     @endphp
 
     <a href="/tri/id">
-        <div class= "bg-gray-400 text-white text-center font-bold py-2 hover:bg-gray-500">
-            <p>ID</p>
+        <div class= "bg-gray-400 text-white text-center font-bold py-2 hover:bg-gray-500 flex justify-center items-center gap-2">
+            <p>ID</p> <i class="fa-solid fa-angle-down"></i>
         </div>
     </a>
 
@@ -64,26 +64,26 @@
     </div>
     
     <a href="/tri/brand">
-        <div class= "bg-gray-400 text-white text-center font-bold py-2 hover:bg-gray-500">
-            <p>Marque</p>
+        <div class= "bg-gray-400 text-white text-center font-bold py-2 hover:bg-gray-500 flex justify-center items-center gap-2">
+            <p>Marque </p><i class="fa-solid fa-angle-down"></i>
         </div>
     </a>
     
     <a href="/tri/name">
-        <div class= "bg-gray-400 text-white text-center font-bold py-2 hover:bg-gray-500">
-            <p>Nom</p>
+        <div class= "bg-gray-400 text-white text-center font-bold py-2 hover:bg-gray-500 flex justify-center items-center gap-2">
+            <p>Nom </p><i class="fa-solid fa-angle-down"></i>
         </div>
     </a>
 
     <a href="/tri/largeur">
-        <div class= "bg-gray-400 text-white text-center font-bold py-2 hover:bg-gray-500">
-            <p>Dimensions (cm)</p>
+        <div class= "bg-gray-400 text-white text-center font-bold py-2 hover:bg-gray-500 flex justify-center items-center gap-2">
+            <p>Dimensions (cm) </p><i class="fa-solid fa-angle-down"></i>
         </div>
     </a>
 
     <a href="/tri/discounted_price">
-        <div class= "bg-gray-400 text-white text-center font-bold py-2 hover:bg-gray-500">
-            <p>Prix</p>
+        <div class= "bg-gray-400 text-white text-center font-bold py-2 hover:bg-gray-500 flex justify-center items-center gap-2">
+            <p>Prix </p><i class="fa-solid fa-angle-down"></i>
         </div>
     </a>
     

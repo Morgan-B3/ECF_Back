@@ -42,16 +42,14 @@ class MatelasController extends Controller
         
         // if(! empty($order) || ! empty($direction) || ! empty($min_price) || ! empty($max_price)){
 
-        $matelas = Matelas::all();
+        $matelas = Matelas::all()->sortBy("$filtre");
 
         foreach($matelas as $matela){
             $matela->discounted_price = Matelas::discount($matela->price, $matela->discount);
         }
 
-        dd($matelas);
-
         return view('home', [
-            'matelas' => $matelas->sortBy("$filtre"),
+            'matelas' => $matelas,
             "title" => 'Literie3000'
         ]);
     }
@@ -90,7 +88,7 @@ class MatelasController extends Controller
         $matelas->name = $request->nom;
         $matelas->price = $request->prix;
         $matelas->discount = $request->input('remise', null);
-        //$matelas->discounted_price = Matelas::discount($matelas->price, $matelas->discount);
+        $matelas->discounted_price = Matelas::discount($matelas->price, $matelas->discount);
         $matelas->image = $request->input('image', 'https://via.placeholder.com/640x480.png/007766?text=facere');
         $matelas->save();
         $matelas->brand()->sync($request->brand);
@@ -136,7 +134,7 @@ class MatelasController extends Controller
         $matelas->name = $request->nom;
         $matelas->price = $request->prix;
         $matelas->discount = $request->input('remise', null);
-        //$matelas->discounted_price = Matelas::discount($matelas->price, $matelas->discount);
+        $matelas->discounted_price = Matelas::discount($matelas->price, $matelas->discount);
         $matelas->image = $request->input('image', 'https://via.placeholder.com/640x480.png/007766?text=facere');
         $matelas->save();
         $matelas->brand()->sync($request->brand);
