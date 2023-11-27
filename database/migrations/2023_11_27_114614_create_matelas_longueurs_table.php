@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('matelas_longueurs', function (Blueprint $table) {
             $table->id();
+            $table->text('matelas_id');
+            $table->text('longueur_id');
             $table->timestamps();
         });
     }

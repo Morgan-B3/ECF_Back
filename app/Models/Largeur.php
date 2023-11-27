@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Largeur extends Model
 {
     use HasFactory;
+
+    public function matelas()
+    {
+        return $this->belongsToMany(Matelas::class, 'matelas_largeurs');
+    }
 }

@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('matelas_brands', function (Blueprint $table) {
             $table->id();
+            $table->text('brand_id');
+            $table->text('matelas_id');
             $table->timestamps();
         });
     }

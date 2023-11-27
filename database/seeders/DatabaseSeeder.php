@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Matelas::factory(10)->create();
+       
         Brand::factory()->create(['name' => 'Epeda']);
         Brand::factory()->create(['name' => 'Dreamway']);
         Brand::factory()->create(['name' => 'Bultex']);
@@ -32,6 +32,14 @@ class DatabaseSeeder extends Seeder
         }
         foreach ($largeurs as $largeur){
             Largeur::factory()->create(['value' => $largeur]);
+        }
+
+        $matelas = Matelas::factory(10)->create();
+
+        foreach ($matelas as $matela){
+            $matela->brand()->attach(rand(1,5));
+            $matela->longueur()->attach(rand(1,5));
+            $matela->largeur()->attach(rand(1,8));
         }
 
     }
