@@ -81,7 +81,6 @@ class MatelasController extends Controller
             'largeur' => 'required|exists:largeurs,id',
             'prix' => 'required|numeric|between:1,9999',
             'remise' => 'nullable|numeric|between:0,100',
-            //'image' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -134,7 +133,7 @@ class MatelasController extends Controller
             'largeur' => 'required|exists:largeurs,id',
             'prix' => 'required|numeric|between:1,9999',
             'remise' => 'nullable|numeric|between:0,100',
-            'image' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $matelas->name = $request->nom;
