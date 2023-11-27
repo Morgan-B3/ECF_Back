@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\MatelasController;
 use Illuminate\Support\Facades\Route;
 
@@ -7,6 +8,11 @@ use Illuminate\Support\Facades\Route;
 // Page d'accueil (catalogue)
 Route::get('/', [MatelasController::class, 'index']);
 Route::get('/tri/{filtre}', [MatelasController::class, 'filter']);
+
+//Marques
+Route::get('/marques', [BrandController::class, 'index']);
+Route::get('/marques/{marque}/tri/{filtre}', [BrandController::class, 'filter']);
+Route::get('/marques/{marque}', [BrandController::class, 'show']);
 
 //Ajouter un matelas
 Route::get('/ajouter', [MatelasController::class, 'create']);

@@ -22,7 +22,7 @@ class MatelasFactory extends Factory
             'price' => fake()->numberBetween(750,1200),
             'discount' => fake()->randomElement([null, fake()->numberBetween(5,20)]),
             'discounted_price' => null,
-            'image' => fake()->imageUrl(),
+            'image' => fake()->randomElement(['/images/mattress_1.jpg','/images/mattress_2.jpg','/images/mattress_3.jpg','/images/mattress_4.jpg',]),
         ];
     }
 }

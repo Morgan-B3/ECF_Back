@@ -42,18 +42,19 @@ class MatelasController extends Controller
         
         // if(! empty($order) || ! empty($direction) || ! empty($min_price) || ! empty($max_price)){
 
-        $matelas = Matelas::all()->sortBy("$filtre");
+        $matelas = Matelas::all();
 
         foreach($matelas as $matela){
             $matela->discounted_price = Matelas::discount($matela->price, $matela->discount);
         }
 
+        dd($matelas);
+
         return view('home', [
-            'matelas' => $matelas,
+            'matelas' => $matelas->sortBy("$filtre"),
             "title" => 'Literie3000'
         ]);
     }
-
 
 
     /**
@@ -82,7 +83,7 @@ class MatelasController extends Controller
             'largeur' => 'required|exists:largeurs,id',
             'prix' => 'required|numeric|between:1,9999',
             'remise' => 'nullable|numeric|between:0,100',
-            'image' => 'url',
+            'image' => 'required',
         ]);
 
         $matelas = new Matelas();
@@ -96,7 +97,7 @@ class MatelasController extends Controller
         $matelas->longueur()->sync($request->longueur);
         $matelas->largeur()->sync($request->largeur);
 
-        return redirect('/')->with('message', 'Le matelas a été ajouté.');
+        return redirect('/')->with('message', "Le matelas $matelas->id a été ajouté.");
     }
 
 
@@ -129,7 +130,7 @@ class MatelasController extends Controller
             'largeur' => 'required|exists:largeurs,id',
             'prix' => 'required|numeric|between:1,9999',
             'remise' => 'nullable|numeric|between:0,100',
-            'image' => 'url',
+            'image' => 'required',
         ]);
 
         $matelas->name = $request->nom;
