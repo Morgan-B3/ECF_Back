@@ -16,6 +16,7 @@ class MatelasFactory extends Factory
      */
     public function definition(): array
     {
+        
         return [
             'name' => fake()->sentence(1),
             'brand' => fake()->randomElement(['EPEDA', 'DREAMWAY', 'BULTEX', 'DORSOLINE', 'MEMORYLINE']),

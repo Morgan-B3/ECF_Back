@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('brand');
             $table->string('dimension');
-            $table->integer('price');
+            $table->float('price');
             $table->integer('discount')->nullable();
+            $table->float('discounted_price')->nullable();
             $table->string('image');
             $table->timestamps();
         });

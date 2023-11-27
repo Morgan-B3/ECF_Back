@@ -12,7 +12,7 @@
     <header class="sticky top-0 bg-[rgb(20,66,132)] py-4 z-50">
         <div class="grid grid-cols-3 justify-between items-center w-[60%] mx-auto ">
             <div></div>
-            <a href="/"><img src="images/logo_trans.png" alt="Logo Literie3000" class="w-80 mx-auto"></a>
+            <a href="/"><img src="/images/logo_trans.png" alt="Logo Literie3000" class="w-80 mx-auto"></a>
             <nav class="w-fit space-x-8 text-lg mx-auto">
                 <a href="/" class="text-white hover:text-[rgb(255,204,77)] duration-200 transition-all">Catalogue</a>
                 <a href="/ajouter" class="text-white hover:text-[rgb(255,204,77)]  duration-200">Ajouter un matelas</a>
