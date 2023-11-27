@@ -56,7 +56,7 @@
     <input type="number" name="remise" id="remise" value="{{old('remise', $matelas->discount)}}" min="0" max="100" class="rounded-lg">
 
     <label class="w-full text-xl font-bold flex justify-center" for="image">Image (URL) * :</label>
-    <input type="text" name="image" id="image" value="{{old('image', $matelas->image)}}" class="rounded-lg">
+    <input type="file" name="image" id="image">
 
 
 <button class="col-span-2 block mx-auto bg-green-400 rounded-lg px-4 py-2 w-fit my-4 hover:bg-green-500 hover:text-white">Modifier</button>

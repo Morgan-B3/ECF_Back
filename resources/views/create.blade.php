@@ -8,7 +8,7 @@
     <p class="text-red-500">{{ $error }}</p>
 @endforeach
 
-<form action="" method="post" class="grid grid-cols-2 items-center gap-y-6 my-8 w-1/2 mx-auto">
+<form action="" method="post" class="grid grid-cols-2 items-center gap-y-6 my-8 w-1/2 mx-auto" enctype="multipart/form-data">
 
 @csrf
 
@@ -55,7 +55,9 @@
     <input type="number" name="remise" id="remise" value="{{old('remise')}}" min="0" max="100" class="rounded-lg">
 
     <label class="w-full text-xl font-bold flex justify-center" for="image">Image (URL) * :</label>
-    <input type="text" name="image" id="image" value="{{old('image', '/images/mattress_1.jpg')}}" class="rounded-lg">
+    <input type="file" name="image" id="image">
+
+
 
 <button class="col-span-2 block mx-auto bg-green-400 rounded-lg px-4 py-2 w-fit my-4 hover:bg-green-500 hover:text-white">Ajouter</button>
 </form>

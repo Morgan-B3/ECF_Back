@@ -15,7 +15,7 @@ class Matelas extends Model
     public static function discount($price, $discount){
         if ($discount){
             $discounted_price = $price * (1 - $discount / 100);
-            return number_format($discounted_price, 2, ".", " ");
+            return number_format($discounted_price, 2, ".", "");
         }
         else{
             return $price;
