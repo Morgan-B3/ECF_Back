@@ -16,7 +16,7 @@
 <a href="/ajouter" class="block mx-auto bg-green-400 rounded-lg px-4 py-2 w-fit my-4 hover:bg-green-500 hover:text-white ">Ajouter un matelas</a>
 
 {{-- Filtre --}}
-<form action="">
+{{-- <form action="">
     <div class="flex justify-between items-center mb-8">
         <div>
             <label for="order_by">Trier par</label>
@@ -51,7 +51,7 @@
 
         <button class="bg-gray-900 px-4 py-2 text-white inline-block rounded hover:bg-gray-700 duration-200">Filtrer</button>
     </div>
-</form>
+</form> --}}
 
 
 {{-- Liste de matelas --}}
