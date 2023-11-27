@@ -23,6 +23,7 @@ class MatelasFactory extends Factory
             'dimension' => fake()->randomElement(['90x190', '140x190', '160x200', '180x200', '200x200']),
             'price' => fake()->numberBetween(750,1200),
             'discount' => fake()->randomElement([null, fake()->numberBetween(5,20)]),
+            'discounted_price' => null,
             'image' => fake()->imageUrl(),
         ];
     }

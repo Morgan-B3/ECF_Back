@@ -17,27 +17,34 @@ class MatelasController extends Controller
     {
         $matelas = Matelas::all();
 
-        /**
-         * Filtre
-         */
-        $order = $_GET['order_by'] ?? '';
-        $direction = $_GET['direction'] ?? '';
-        $min_price = $_GET['min_price'] ?? '';
-        $max_price = $_GET['max_price'] ?? '';
-        
-        if(! empty($order) || ! empty($direction) || ! empty($min_price) || ! empty($max_price)){
-            $matelas = Matelas::sort($order, $direction, $min_price, $max_price);
+        foreach($matelas as $matela){
+            $matela->discounted_price = Matelas::discount($matela->price, $matela->discount);
         }
+    
+        return view('home', [
+            'matelas' => $matelas,
+            "title" => 'Literie3000'
+        ]);
+    }
+
+
+    /**
+     * Tri des matelas
+     */
+    public function filter($filtre){
+        // $order = $_GET['order_by'] ?? '';
+        // $direction = $_GET['direction'] ?? '';
+        // $min_price = $_GET['min_price'] ?? '';
+        // $max_price = $_GET['max_price'] ?? '';
+        
+        // if(! empty($order) || ! empty($direction) || ! empty($min_price) || ! empty($max_price)){
+
+        $matelas = Matelas::all()->sortBy("$filtre");
 
         foreach($matelas as $matela){
-            if ($matela->discount){
-                $matela->discounted_price = $matela->price * (1 - $matela->discount / 100);
-                $matela->discounted_price = number_format($matela->discounted_price, 2, ",", " ");
-            }
-            else{
-                $matela->discounted_price = null;
-            }
+            $matela->discounted_price = Matelas::discount($matela->price, $matela->discount);
         }
+
         return view('home', [
             'matelas' => $matelas,
             "title" => 'Literie3000'

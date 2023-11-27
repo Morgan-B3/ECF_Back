@@ -46,34 +46,49 @@
     </div>
 </form>
 
-<form action="" class="grid grid-cols-6 gap-2 bg-white mb-2 ">
-    <a href="">
-        <div class= "bg-gray-400 text-white text-center font-bold py-2 hover:bg-gray-500">
-        ID
-        </div>
-    </a>
-    <div class= "bg-gray-400 text-white text-center font-bold py-2">
-        <p>Image</p>
-    </div>
-    <div class= "bg-gray-400 text-white text-center font-bold py-2">
-        <p>Marque</p>
-    </div>
-    <div class= "bg-gray-400 text-white text-center font-bold py-2">
-        <p>Nom / Dimensions</p>
-    </div>
-    <div class= "bg-gray-400 text-white text-center font-bold py-2">
-        <p>Prix</p>
-    </div>
-    <div class= "bg-gray-400 text-white text-center font-bold py-2">
-        <p>Actions</p>
-    </div>
-</form>
-
-<div class="grid grid-cols-6 gap-2 bg-white mb-8">
+<div class="grid grid-cols-7 gap-2 bg-white mb-8">
     @php
         $number = 0
     @endphp
 
+    <a href="/tri/id">
+        <div class= "bg-gray-400 text-white text-center font-bold py-2 hover:bg-gray-500">
+            <p>ID</p>
+        </div>
+    </a>
+
+    <div class= "bg-gray-400 text-white text-center font-bold py-2">
+        <p>Image</p>
+    </div>
+    
+    <a href="/tri/brand">
+        <div class= "bg-gray-400 text-white text-center font-bold py-2 hover:bg-gray-500">
+            <p>Marque</p>
+        </div>
+    </a>
+    
+    <a href="/tri/name">
+        <div class= "bg-gray-400 text-white text-center font-bold py-2 hover:bg-gray-500">
+            <p>Nom</p>
+        </div>
+    </a>
+
+    <a href="/tri/dimension">
+        <div class= "bg-gray-400 text-white text-center font-bold py-2 hover:bg-gray-500">
+            <p>Dimensions</p>
+        </div>
+    </a>
+
+    <a href="/tri/price">
+        <div class= "bg-gray-400 text-white text-center font-bold py-2 hover:bg-gray-500">
+            <p>Prix</p>
+        </div>
+    </a>
+    
+    <div class= "bg-gray-400 text-white text-center font-bold py-2">
+        <p>Actions</p>
+    </div>
+    
     @foreach ($matelas as $matela)
 
         <div class= "@if($number%2==0) bg-sky-200 @else bg-gray-300  @endif flex flex-col items-center justify-center gap-4">
@@ -90,15 +105,18 @@
 
         <div class="@if($number%2==0) bg-sky-200 @else bg-gray-300  @endif flex flex-col items-center justify-center gap-4">
             <p>{{$matela->name}}</p>
+        </div>
+
+        <div class="@if($number%2==0) bg-sky-200 @else bg-gray-300  @endif flex flex-col items-center justify-center gap-4">
             <p>{{$matela->dimension}}</p>
         </div>
 
         <div class="@if($number%2==0) bg-sky-200 @else bg-gray-300  @endif flex flex-col items-center justify-center gap-4">
-            @if ($matela->discounted_price)
+            @if ($matela->discount)
             <p class="line-through">{{$matela->price}} €</p>
             <p>{{$matela->discounted_price}} € (-{{$matela->discount}}%)</p>                
             @else
-            <p class="">{{$matela->price}} €</p>  
+            <p class="">{{$matela->discounted_price}} €</p>  
             @endif    
         </div>
 

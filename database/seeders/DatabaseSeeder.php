@@ -4,6 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Brand;
+use App\Models\Dimension;
+use App\Models\Largeur;
+use App\Models\Longueur;
 use App\Models\Matelas;
 use Illuminate\Database\Seeder;
 
@@ -14,12 +18,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
         Matelas::factory(10)->create();
+        Brand::factory()->create(['name' => 'Epeda']);
+        Brand::factory()->create(['name' => 'Dreamway']);
+        Brand::factory()->create(['name' => 'Bultex']);
+        Brand::factory()->create(['name' => 'Dorsoline']);
+        Brand::factory()->create(['name' => 'Memoryline']);
+
+        $longueurs = [180, 190, 200, 210, 220];
+        $largeurs = [80, 90, 100, 120, 140, 160, 180, 200];
+        foreach ($longueurs as $longueur){
+            Longueur::factory()->create(['value' => $longueur]);
+        }
+        foreach ($largeurs as $largeur){
+            Largeur::factory()->create(['value' => $largeur]);
+        }
+
     }
 }

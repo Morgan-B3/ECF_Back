@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 // Page d'accueil (catalogue)
 Route::get('/', [MatelasController::class, 'index']);
+Route::get('/tri/{filtre}', [MatelasController::class, 'filter']);
 
 //Ajouter un matelas
 Route::get('/ajouter', [MatelasController::class, 'create']);
