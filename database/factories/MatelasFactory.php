@@ -24,7 +24,7 @@ class MatelasFactory extends Factory
             'price' => $price,
             'discount' => $discount,
             'discounted_price' => Matelas::discount($price, $discount),
-            'image' => fake()->randomElement(['mattress_1.jpg','mattress_2.jpg','mattress_3.jpg','mattress_4.jpg',]),
+            'image' => fake()->randomElement(['/images/mattress_1.jpg','/images/mattress_2.jpg','/images/mattress_3.jpg','/images/mattress_4.jpg',]),
         ];
     }
 }

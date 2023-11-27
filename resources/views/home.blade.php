@@ -109,7 +109,7 @@
         </div>
 
         <div class= "@if($number%2==0) bg-sky-200 @else bg-gray-200  @endif flex flex-col items-center justify-center gap-4">
-            <img src="/images/{{$matela->image}}" class="h-[150px] object-cover" alt="matelas{{$matela->id}}">
+            <img src="{{$matela->image}}" class="h-[150px] object-cover" alt="matelas{{$matela->id}}">
         </div>
 
         <div class="@if($number%2==0) bg-sky-200 @else bg-gray-200  @endif flex flex-col items-center justify-center gap-4">
