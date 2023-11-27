@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MatelasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Page d'accueil (catalogue)
+Route::get('/', [MatelasController::class, 'index']);
+//Ajouter un matelas
+Route::get('/ajouter', [MatelasController::class, 'create']);
+Route::post('/ajouter', [MatelasController::class, 'create']);
