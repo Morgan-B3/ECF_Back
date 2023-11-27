@@ -4,7 +4,7 @@
 
 <h1 class="text-3xl underline mx-auto w-fit font-bold">CATALOGUE</h1>
 @if (session('message'))
-<p class="rounded shadow text-green-800 bg-green-300 text-center p-2 mb-9">
+<p class="rounded w-fit mx-auto shadow text-green-800 bg-green-300 text-center p-2 my-6">
     {{ session('message') }}
 </p>
 @endif
@@ -18,7 +18,8 @@
                 <option value="id">ID</option>
                 <option value="brand">Marque</option>
                 <option value="name">Nom</option>
-                <option value="dimension">Dimensions</option>
+                <option value="largeur">Largeur</option>
+                <option value="longueur">Longueur</option>
                 <option value="price">Prix</option>
                 <option value="discount">Remise</option>
             </select>
@@ -100,7 +101,7 @@
         </div>
 
         <div class="@if($number%2==0) bg-sky-200 @else bg-gray-300  @endif flex flex-col items-center justify-center gap-4">
-            <h2>{{$matela->brand}}</h2>
+            <h2>{{strtoupper($matela->brand->pluck('name')->implode(''))}}</h2>
         </div>
 
         <div class="@if($number%2==0) bg-sky-200 @else bg-gray-300  @endif flex flex-col items-center justify-center gap-4">
@@ -108,7 +109,7 @@
         </div>
 
         <div class="@if($number%2==0) bg-sky-200 @else bg-gray-300  @endif flex flex-col items-center justify-center gap-4">
-            <p>{{$matela->dimension}}</p>
+            <p>{{$matela->largeur->pluck('value')->implode('')}}x{{$matela->longueur->pluck('value')->implode('')}}</p>
         </div>
 
         <div class="@if($number%2==0) bg-sky-200 @else bg-gray-300  @endif flex flex-col items-center justify-center gap-4">

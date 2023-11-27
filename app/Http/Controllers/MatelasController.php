@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Largeur;
+use App\Models\Longueur;
 use App\Models\Matelas;
 use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Http\Request;
@@ -61,8 +64,9 @@ class MatelasController extends Controller
         
         return view('create',[
             'title' => 'Ajouter un matelas',
-            'brands' => ['EPEDA', 'DREAMWAY', 'BULTEX', 'DORSOLINE', 'MEMORYLINE'],
-            'dimensions' => ['90x190', '140x190', '160x200', '180x200', '200x200'],
+            'brands' => Brand::all()->sortBy('name'),
+            'longueurs' => Longueur::all()->sortBy('value'),
+            'largeurs' => Largeur::all()->sortBy('value'),
         ]);
     }
 
@@ -73,8 +77,9 @@ class MatelasController extends Controller
     {
         $request->validate([
             'nom' => 'required',
-            'marque' => 'required|in:'.implode(',', ['EPEDA', 'DREAMWAY', 'BULTEX', 'DORSOLINE', 'MEMORYLINE']),
-            'dimension' => 'required|in:'.implode(',',['90x190', '140x190', '160x200', '180x200', '200x200']),
+            'brand' => 'required|exists:brands,id',
+            'longueur' => 'required|exists:longueurs,id',
+            'largeur' => 'required|exists:largeurs,id',
             'prix' => 'required|numeric|between:1,9999',
             'remise' => 'nullable|numeric|between:0,100',
             'image' => 'url',
@@ -82,12 +87,14 @@ class MatelasController extends Controller
 
         $matelas = new Matelas();
         $matelas->name = $request->nom;
-        $matelas->brand = $request->marque;
-        $matelas->dimension = $request->dimension;
         $matelas->price = $request->prix;
         $matelas->discount = $request->input('remise', null);
+        //$matelas->discounted_price = Matelas::discount($matelas->price, $matelas->discount);
         $matelas->image = $request->input('image', 'https://via.placeholder.com/640x480.png/007766?text=facere');
         $matelas->save();
+        $matelas->brand()->sync($request->brand);
+        $matelas->longueur()->sync($request->longueur);
+        $matelas->largeur()->sync($request->largeur);
 
         return redirect('/')->with('message', 'Le matelas a été ajouté.');
     }
@@ -102,8 +109,9 @@ class MatelasController extends Controller
         return view('edit', [
             'title' => 'Modifier un matelas',
             'matelas' => $matelas,
-            'brands' => ['EPEDA', 'DREAMWAY', 'BULTEX', 'DORSOLINE', 'MEMORYLINE'],
-            'dimensions' => ['90x190', '140x190', '160x200', '180x200', '200x200'],
+            'brands' => Brand::all()->sortBy('name'),
+            'longueurs' => Longueur::all()->sortBy('value'),
+            'largeurs' => Largeur::all()->sortBy('value'),
         ]);
     }
 
@@ -116,20 +124,23 @@ class MatelasController extends Controller
         
         $request->validate([
             'nom' => 'required',
-            'marque' => 'required|in:'.implode(',', ['EPEDA', 'DREAMWAY', 'BULTEX', 'DORSOLINE', 'MEMORYLINE']),
-            'dimension' => 'required|in:'.implode(',',['90x190', '140x190', '160x200', '180x200', '200x200']),
+            'brand' => 'required|exists:brands,id',
+            'longueur' => 'required|exists:longueurs,id',
+            'largeur' => 'required|exists:largeurs,id',
             'prix' => 'required|numeric|between:1,9999',
             'remise' => 'nullable|numeric|between:0,100',
             'image' => 'url',
         ]);
 
         $matelas->name = $request->nom;
-        $matelas->brand = $request->marque;
-        $matelas->dimension = $request->dimension;
         $matelas->price = $request->prix;
         $matelas->discount = $request->input('remise', null);
+        //$matelas->discounted_price = Matelas::discount($matelas->price, $matelas->discount);
         $matelas->image = $request->input('image', 'https://via.placeholder.com/640x480.png/007766?text=facere');
         $matelas->save();
+        $matelas->brand()->sync($request->brand);
+        $matelas->longueur()->sync($request->longueur);
+        $matelas->largeur()->sync($request->largeur);
 
         return redirect('/')->with('message', "Le matelas $matelas->id a été modifié.");
     }

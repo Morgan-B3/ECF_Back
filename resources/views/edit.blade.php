@@ -17,23 +17,37 @@
     <input type="text" name="nom" id="nom" value="{{old('nom', $matelas->name)}}">
 </div>
 <div>
-    <label for="marque">Marque * :</label>
-    <select name="marque" id="marque">
+    <label for="brand">Marque * :</label>
+    <select name="brand" id="brand">
         <option value="">Choisir une marque</option>
         @foreach ($brands as $brand)
-            <option value="{{$brand}}" @selected($brand == old('marque', $matelas->brand))>{{$brand}}</option>
+            <option value="{{$brand->id}}" @selected($brand->id == old('brand', $matelas->brand->pluck('id')->implode('')))>{{$brand->name}}</option>
         @endforeach
     </select>
 </div>
-<div>
-    <label for="dimension">Dimensions * :</label>
-    <select name="dimension" id="dimension">
-        <option value="">Choisir une dimension</option>
-        @foreach ($dimensions as $dimension)
-            <option value="{{$dimension}}" @selected($dimension == old('dimension', $matelas->dimension))>{{$dimension}}</option>
-        @endforeach
-    </select>
+
+<div class="flex items-center gap-8">
+    <p>Dimensions :</p>
+    <div>
+        <label for="largeur">Largeur (cm) * :</label>
+        <select name="largeur" id="largeur">
+            <option value="">Choisir une largeur</option>
+            @foreach ($largeurs as $largeur)
+                <option value="{{$largeur->id}}" @selected($largeur->id == old('largeur', $matelas->largeur->pluck('id')->implode('')))>{{$largeur->value}}</option>
+            @endforeach
+        </select>
+    </div>
+    <div>
+        <label for="longueur">Longueur (cm) * :</label>
+        <select name="longueur" id="longueur">
+            <option value="">Choisir une longueur</option>
+            @foreach ($longueurs as $longueur)
+                <option value="{{$longueur->id}}" @selected($longueur->id == old('longueur', $matelas->longueur->pluck('id')->implode('')))>{{$longueur->value}}</option>
+            @endforeach
+        </select>
+    </div>
 </div>
+
 <div>
     <label for="prix">Prix (€) * :</label>
     <input type="number" name="prix" id="prix" value="{{old('prix', $matelas->price)}}" min="1" max="9999">

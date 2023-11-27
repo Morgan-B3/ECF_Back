@@ -19,8 +19,6 @@ class MatelasFactory extends Factory
         
         return [
             'name' => fake()->sentence(1),
-            'brand' => fake()->randomElement(['EPEDA', 'DREAMWAY', 'BULTEX', 'DORSOLINE', 'MEMORYLINE']),
-            'dimension' => fake()->randomElement(['90x190', '140x190', '160x200', '180x200', '200x200']),
             'price' => fake()->numberBetween(750,1200),
             'discount' => fake()->randomElement([null, fake()->numberBetween(5,20)]),
             'discounted_price' => null,
