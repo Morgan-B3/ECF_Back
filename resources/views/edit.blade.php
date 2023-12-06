@@ -7,7 +7,7 @@
 </h1>
 
 
-<form action="" method="post" class="grid grid-cols-2 items-center gap-y-6 my-8 w-1/2 mx-auto">
+<form action="" method="post" class="grid grid-cols-2 items-center gap-y-6 my-8 w-1/2 mx-auto" enctype="multipart/form-data">
 
 @csrf
 
@@ -117,9 +117,14 @@
     <label class="w-full text-xl font-bold flex justify-center" for="image">
         Image (URL) * :
     </label>
-    <input type="text" name="image" id="image" value="{{old('image', $matelas->image)}}" class="rounded-lg">
+    <div>
+        <p><strong>Ancienne image : </strong>{{$matelas->image}}</p>
+        <input type="file" class="form-control rounded-lg @error('image') ring-2 ring-red-500 @enderror" name="image" id="image"> 
+        {{-- <input type="text" name="image" id="image" value="{{old('image', $matelas->image)}}" class="rounded-lg"> --}}
+    </div>
     @error('image')
-        <div class="col-span-2 w-fit mx-auto bg-red-300 px-4 py-2 rounded-lg text-red-800">
+        <div></div>
+        <div class="w-fit mx-auto bg-red-300 px-4 py-2 rounded-lg text-red-800">
             {{$message}}
         </div>
     @enderror

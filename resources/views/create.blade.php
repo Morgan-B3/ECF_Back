@@ -12,7 +12,7 @@
     </p>
 @endforeach --}}
 
-<form action="" method="post" class="grid grid-cols-2 items-center gap-y-6 my-8 w-1/2 mx-auto">
+<form action="" method="post" class="grid grid-cols-2 items-center gap-y-6 my-8 w-1/2 mx-auto" enctype="multipart/form-data">
 
 @csrf
 
@@ -126,12 +126,15 @@
     <label class="w-full text-xl font-bold flex justify-center" for="image">
         Image (URL) * :
     </label>
-    <input type="text" name="image" id="image" value="{{old('image', '/images/mattress_1.jpg')}}" class="rounded-lg @error('image') ring-2 ring-red-500 @enderror">
+    <input type="file" class="form-control rounded-lg @error('image') ring-2 ring-red-500 @enderror" name="image" id="image"> 
+    {{-- <input type="text" name="image" id="image" value="{{old('image', '/images/mattress_1.jpg')}}" class="rounded-lg @error('image') ring-2 ring-red-500 @enderror"> --}}
     @error('image')
+        <div></div>
         <div class="w-fit mx-auto bg-red-300 px-4 py-2 rounded-lg text-red-800">
             {{$message}}
         </div>
     @enderror
+
   
 
     <button class="col-span-2 block mx-auto bg-green-400 rounded-lg px-4 py-2 w-fit my-4 hover:bg-green-300 hover:text-green-800 active:bg-green-500 active:text-black duration-150 transition-all ">

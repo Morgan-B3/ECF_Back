@@ -78,8 +78,8 @@ class MatelasController extends Controller
             'largeur' => 'required|exists:largeurs,id',
             'prix' => 'required|numeric|between:1,9999',
             'remise' => 'nullable|numeric|between:1,100',
-            'image' => 'required',
-            //'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            //'image' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $matelas = new Matelas();
@@ -87,12 +87,12 @@ class MatelasController extends Controller
         $matelas->price = $request->prix;
         $matelas->discount = $request->input('remise', null);
         $matelas->discounted_price = Matelas::discount($matelas->price, $matelas->discount);
-        $matelas->image = $request->input('image', 'https://via.placeholder.com/640x480.png/007766?text=facere');
-        // if ($request->hasFile('image')){
-        //     $imageName = time().'.'.$request->image->extension();
-        //     $request->image->move(public_path('images'),$imageName);
-        //     $matelas->image = $imageName;
-        // }
+       // $matelas->image = $request->input('image', 'https://via.placeholder.com/640x480.png/007766?text=facere');
+        if ($request->hasFile('image')){
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images'),$imageName);
+            $matelas->image = $imageName;
+        }
 
         $matelas->save();
         $matelas->brand()->sync($request->marque);
@@ -132,18 +132,26 @@ class MatelasController extends Controller
             'largeur' => 'required|exists:largeurs,id',
             'prix' => 'required|numeric|between:1,9999',
             'remise' => 'nullable|numeric|between:0,100',
-            'image' => 'required',
+            //'image' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $matelas->name = $request->nom;
         $matelas->price = $request->prix;
         $matelas->discount = $request->input('remise', null);
         $matelas->discounted_price = Matelas::discount($matelas->price, $matelas->discount);
-        $matelas->image = $request->input('image', 'https://via.placeholder.com/640x480.png/007766?text=facere');
+        //$matelas->image = $request->input('image', 'https://via.placeholder.com/640x480.png/007766?text=facere');
+        if ($request->hasFile('image')){
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images'),$imageName);
+            $matelas->image = $imageName;
+        }
+        
         $matelas->save();
         $matelas->brand()->sync($request->marque);
         $matelas->longueur()->sync($request->longueur);
         $matelas->largeur()->sync($request->largeur);
+
 
         return redirect('/')->with('message', "Le matelas $matelas->id a été modifié.");
     }
