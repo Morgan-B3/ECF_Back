@@ -73,7 +73,7 @@ class MatelasController extends Controller
     {
         $request->validate([
             'nom' => 'required|between:3,255',
-            'brand' => 'required|exists:brands,id',
+            'marque' => 'required|exists:brands,id',
             'longueur' => 'required|exists:longueurs,id',
             'largeur' => 'required|exists:largeurs,id',
             'prix' => 'required|numeric|between:1,9999',
@@ -95,7 +95,7 @@ class MatelasController extends Controller
         // }
 
         $matelas->save();
-        $matelas->brand()->sync($request->brand);
+        $matelas->brand()->sync($request->marque);
         $matelas->longueur()->sync($request->longueur);
         $matelas->largeur()->sync($request->largeur);
 
@@ -127,7 +127,7 @@ class MatelasController extends Controller
         
         $request->validate([
             'nom' => 'required',
-            'brand' => 'required|exists:brands,id',
+            'marque' => 'required|exists:brands,id',
             'longueur' => 'required|exists:longueurs,id',
             'largeur' => 'required|exists:largeurs,id',
             'prix' => 'required|numeric|between:1,9999',
@@ -141,7 +141,7 @@ class MatelasController extends Controller
         $matelas->discounted_price = Matelas::discount($matelas->price, $matelas->discount);
         $matelas->image = $request->input('image', 'https://via.placeholder.com/640x480.png/007766?text=facere');
         $matelas->save();
-        $matelas->brand()->sync($request->brand);
+        $matelas->brand()->sync($request->marque);
         $matelas->longueur()->sync($request->longueur);
         $matelas->largeur()->sync($request->largeur);
 

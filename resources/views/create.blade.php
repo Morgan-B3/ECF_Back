@@ -29,21 +29,21 @@
     @enderror
 
 
-    <label class="w-full text-xl font-bold flex justify-center" for="brand">
+    <label class="w-full text-xl font-bold flex justify-center" for="marque">
         Marque * :
     </label>
-    <select name="brand" id="brand" class="rounded-lg @error('brand') ring-2 ring-red-500 @enderror">
+    <select name="marque" id="marque" class="rounded-lg @error('marque') ring-2 ring-red-500 @enderror">
         <option value="" class="text-gray-600">
             Choisir une marque
         </option>
         @foreach ($brands as $brand)
-            <option value="{{$brand->id}}" @selected($brand->id == old('brand', $selectedBrand))>
+            <option value="{{$brand->id}}" @selected($brand->id == old('marque', $selectedBrand))>
                 {{$brand->name}}
             </option>
         @endforeach
     </select>
 
-    @error('brand')
+    @error('marque')
         <div></div>
         <div class="w-fit mx-auto bg-red-300 px-4 py-2 rounded-lg text-red-800">
             {{$message}}

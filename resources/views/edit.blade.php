@@ -23,20 +23,20 @@
     @enderror
 
 
-    <label class="w-full text-xl font-bold flex justify-center" for="brand">
+    <label class="w-full text-xl font-bold flex justify-center" for="marque">
         Marque * :
     </label>
-    <select name="brand" id="brand" class="rounded-lg">
+    <select name="marque" id="marque" class="rounded-lg">
         <option value="" class="text-gray-600">
             Choisir une marque
         </option>
         @foreach ($brands as $brand)
-            <option value="{{$brand->id}}" @selected($brand->id == old('brand', $matelas->brand->pluck('id')->implode('')))>
+            <option value="{{$brand->id}}" @selected($brand->id == old('marque', $matelas->brand->pluck('id')->implode('')))>
                 {{$brand->name}}
             </option>
         @endforeach
     </select>
-    @error('brand')
+    @error('marque')
         <div class="col-span-2 w-fit mx-auto bg-red-300 px-4 py-2 rounded-lg text-red-800">
             {{$message}}
         </div>
