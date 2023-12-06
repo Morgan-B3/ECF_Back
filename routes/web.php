@@ -15,7 +15,7 @@ Route::get('/marques/{marque}/tri/{filtre}', [BrandController::class, 'filter'])
 Route::get('/marques/{marque}', [BrandController::class, 'show']);
 
 //Ajouter un matelas
-Route::get('/ajouter', [MatelasController::class, 'create']);
+Route::get('/ajouter/{brand?}', [MatelasController::class, 'create']);
 Route::post('/ajouter', [MatelasController::class, 'store']);
 
 //Modifier un matelas

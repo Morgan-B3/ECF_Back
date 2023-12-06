@@ -13,11 +13,19 @@
 
     <header class="sticky top-0 bg-[rgb(20,66,132)] py-4 z-50">
         <div class="flex justify-between items-center w-[60%] mx-auto ">
-            <a href="/"><img src="/images/logo_trans.png" alt="Logo Literie3000" class="w-100 mx-auto"></a>
+            <a href="/">
+                <img src="/images/logo_trans.png" alt="Logo Literie3000" class="w-100 mx-auto">
+            </a>
             <nav class="flex gap-8 text-xl w-full justify-end">
-                <a href="/" class="text-white hover:text-[rgb(255,204,77)] duration-200 transition-all">Catalogue</a>
-                <a href="/marques" class="text-white hover:text-[rgb(255,204,77)] duration-200 transition-all">Marques</a>
-                <a href="/ajouter" class="text-white hover:text-[rgb(255,204,77)]  duration-200">Ajouter un matelas</a>
+                <a href="/" class="text-white hover:text-[rgb(255,204,77)] duration-200 transition-all">
+                    Catalogue
+                </a>
+                <a href="/marques" class="text-white hover:text-[rgb(255,204,77)] duration-200 transition-all">
+                    Marques
+                </a>
+                <a href="/ajouter" class="text-white hover:text-[rgb(255,204,77)]  duration-200">
+                    Ajouter un matelas
+                </a>
             </nav>
         </div>
     </header>

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
-       /**
+    /**
      * Affiche la liste des marques
      */
     public function index(){
@@ -39,17 +39,10 @@ class BrandController extends Controller
         ]);
     }
 
-        /**
+    /**
      * Tri des matelas
      */
     public function filter($brand, $filtre){
-        // $order = $_GET['order_by'] ?? '';
-        // $direction = $_GET['direction'] ?? '';
-        // $min_price = $_GET['min_price'] ?? '';
-        // $max_price = $_GET['max_price'] ?? '';
-        
-        // if(! empty($order) || ! empty($direction) || ! empty($min_price) || ! empty($max_price)){
-
         $matelas = Matelas::join('matelas_brands','matelas.id','matelas_brands.matelas_id')
         ->join('brands', 'brands.id', 'matelas_brands.brand_id')
         ->select('matelas.*')

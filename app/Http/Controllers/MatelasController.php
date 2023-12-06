@@ -35,13 +35,6 @@ class MatelasController extends Controller
      * Tri des matelas
      */
     public function filter($filtre){
-        // $order = $_GET['order_by'] ?? '';
-        // $direction = $_GET['direction'] ?? '';
-        // $min_price = $_GET['min_price'] ?? '';
-        // $max_price = $_GET['max_price'] ?? '';
-        
-        // if(! empty($order) || ! empty($direction) || ! empty($min_price) || ! empty($max_price)){
-
         $matelas = Matelas::all()->sortBy("$filtre");
 
         foreach($matelas as $matela){
@@ -58,14 +51,18 @@ class MatelasController extends Controller
     /**
      * Affiche le formulaire d'ajout
      */
-    public function create()
+    public function create($brandName = null)
     {
-        
+        $selectedBrand = null;
+        if($brandName){
+            $selectedBrand = Brand::where('name',$brandName)->get()[0]->id;
+        }
         return view('create',[
             'title' => 'Ajouter un matelas',
             'brands' => Brand::all()->sortBy('name'),
             'longueurs' => Longueur::all()->sortBy('value'),
             'largeurs' => Largeur::all()->sortBy('value'),
+            'selectedBrand' => $selectedBrand,
         ]);
     }
 
@@ -75,12 +72,12 @@ class MatelasController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nom' => 'required',
+            'nom' => 'required|between:3,255',
             'brand' => 'required|exists:brands,id',
             'longueur' => 'required|exists:longueurs,id',
             'largeur' => 'required|exists:largeurs,id',
             'prix' => 'required|numeric|between:1,9999',
-            'remise' => 'nullable|numeric|between:0,100',
+            'remise' => 'nullable|numeric|between:1,100',
             'image' => 'required',
             //'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
