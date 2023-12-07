@@ -9,9 +9,4 @@ class Brand extends Model
 {
     use HasFactory;
 
-    // public function matelas()
-    // {
-    //     return $this->belongsToMany(Matelas::class, 'matelas_brands');
-    // }
-
 }

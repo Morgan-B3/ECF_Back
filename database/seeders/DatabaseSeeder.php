@@ -43,9 +43,6 @@ class DatabaseSeeder extends Seeder
             'longueur_id' => 2,
             'largeur_id' => 2,
         ]);
-        // $mattress_1->brand()->attach(1);
-        // $mattress_1->longueur()->attach(2);
-        // $mattress_1->largeur()->attach(2);
 
         
         Matelas::factory()->create([
@@ -57,9 +54,6 @@ class DatabaseSeeder extends Seeder
             'longueur_id' => 2,
             'largeur_id' => 2,
         ]);
-        // $mattress_2->brand()->attach(2);
-        // $mattress_2->longueur()->attach(2);
-        // $mattress_2->largeur()->attach(2);
 
 
         Matelas::factory()->create([
@@ -71,9 +65,6 @@ class DatabaseSeeder extends Seeder
             'longueur_id' => 2,
             'largeur_id' => 5,
         ]);
-        // $mattress_3->brand()->attach(3);
-        // $mattress_3->longueur()->attach(2);
-        // $mattress_3->largeur()->attach(5);
 
 
         Matelas::factory()->create([
@@ -85,20 +76,7 @@ class DatabaseSeeder extends Seeder
             'longueur_id' => 3,
             'largeur_id' => 6,
         ]);
-        // $mattress_4->brand()->attach(1);
-        // $mattress_4->longueur()->attach(3);
-        // $mattress_4->largeur()->attach(6);
-
-
 
         Matelas::factory(10)->create();
-
-        // foreach ($matelas as $matela){
-        //     $matela->brand()->attach(rand(1,5));
-        //     $matela->longueur()->attach(rand(1,5));
-        //     $matela->largeur()->attach(rand(1,8));
-        // }
-
-
     }
 }

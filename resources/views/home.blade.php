@@ -81,12 +81,12 @@
         </div>
 
         <div class= "@if($number%2==0) bg-sky-200 @else bg-gray-200  @endif flex flex-col items-center justify-center gap-4">
-            <img src="/images/{{$matela->image}}" class="h-[150px] object-cover" alt="matelas{{$matela->id}}">
+            <img src="/images/{{$matela->image}}" class="min-w-full h-[150px] object-cover" alt="matelas{{$matela->id}}">
         </div>
 
         <div class="@if($number%2==0) bg-sky-200 @else bg-gray-200  @endif flex flex-col items-center justify-center gap-4">
             <a href="/marques/{{Brand::find($matela->brand_id)->name}}">
-                <h2>
+                <h2 class="text-center w-full break-words">
                     {{strtoupper(Brand::find($matela->brand_id)->name)}}
                 </h2>
             </a>
@@ -99,7 +99,7 @@
         </div>
 
         <div class="@if($number%2==0) bg-sky-200 @else bg-gray-200  @endif flex flex-col items-center justify-center gap-4">
-            <p>
+            <p class="text-center w-full break-words">
                 {{Largeur::find($matela->largeur_id)->value}} x {{Longueur::find($matela->longueur_id)->value}}
             </p>
         </div>

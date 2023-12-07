@@ -1,3 +1,9 @@
+@php
+    use App\Models\Brand;
+    use App\Models\Largeur;
+    use App\Models\Longueur;
+@endphp
+
 @extends('layouts.app')
 
 @section('content')
@@ -69,13 +75,13 @@
         </div>
 
         <div class= "@if($number%2==0) bg-sky-200 @else bg-gray-200  @endif flex flex-col items-center justify-center gap-4">
-            <img src="{{$matela->image}}" class="h-[150px] object-cover" alt="matelas{{$matela->id}}">
+            <img src="/images/{{$matela->image}}" class="min-w-full h-[150px] object-cover" alt="matelas{{$matela->id}}">
         </div>
 
         <div class="@if($number%2==0) bg-sky-200 @else bg-gray-200  @endif flex flex-col items-center justify-center gap-4">
-            <a href="/marques/{{$matela->brand->pluck('name')->implode('')}}">
+            <a href="/marques/{{Brand::find($matela->brand_id)->name}}">
                 <h2>
-                    {{strtoupper($matela->brand->pluck('name')->implode(''))}}
+                    {{strtoupper(Brand::find($matela->brand_id)->name)}}
                 </h2>
             </a>
         </div>
@@ -88,7 +94,7 @@
 
         <div class="@if($number%2==0) bg-sky-200 @else bg-gray-200  @endif flex flex-col items-center justify-center gap-4">
             <p>
-                {{$matela->largeur->pluck('value')->implode('')}} x {{$matela->longueur->pluck('value')->implode('')}}
+                {{Largeur::find($matela->largeur_id)->value}} x {{Longueur::find($matela->longueur_id)->value}}
             </p>
         </div>
 

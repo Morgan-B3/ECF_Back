@@ -47,12 +47,6 @@ class BrandController extends Controller
     public function filter($brand_name, $filtre){
         $brand = Brand::where('name', $brand_name)->first();
         $matelas = Matelas::all()->where('brand_id',$brand->id)->sortBy($filtre);
-        // $matelas = Matelas::join('matelas_brands','matelas.id','matelas_brands.matelas_id')
-        // ->join('brands', 'brands.id', 'matelas_brands.brand_id')
-        // ->select('matelas.*')
-        // ->where('brands.name', $brand)
-        // ->get()
-        // ->sortBy("$filtre");
 
         foreach($matelas as $matela){
             $matela->discounted_price = Matelas::discount($matela->price, $matela->discount);

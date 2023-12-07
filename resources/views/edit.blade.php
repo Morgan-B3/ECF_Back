@@ -12,7 +12,6 @@
 
 @csrf
 
-
     <label class="w-full text-xl font-bold flex justify-center" for="nom">
         Nom du matelas * :
     </label>
@@ -121,7 +120,6 @@
     <div>
         <p><strong>Ancienne image : </strong>{{$matelas->image}}</p>
         <input type="file" class="form-control rounded-lg @error('image') ring-2 ring-red-500 @enderror" name="image" id="image"> 
-        {{-- <input type="text" name="image" id="image" value="{{old('image', $matelas->image)}}" class="rounded-lg"> --}}
     </div>
     @error('image')
         <div></div>
@@ -129,7 +127,6 @@
             {{$message}}
         </div>
     @enderror
-
 
 <button class="col-span-2 block mx-auto bg-orange-400 rounded-lg px-4 py-2 w-fit my-4 hover:bg-orange-300 hover:text-orange-800 active:bg-orange-500 active:text-black duration-150 transition-all ">
     Modifier

@@ -8,10 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class Longueur extends Model
 {
     use HasFactory;
-
-    // public function matelas()
-    // {
-    //     return $this->belongsToMany(Matelas::class, 'matelas_longueurs');
-    // }
-
 }
