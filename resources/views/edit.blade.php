@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -31,7 +32,7 @@
             Choisir une marque
         </option>
         @foreach ($brands as $brand)
-            <option value="{{$brand->id}}" @selected($brand->id == old('marque', $matelas->brand->pluck('id')->implode('')))>
+            <option value="{{$brand->id}}" @selected($brand->id == old('marque', $matelas->brand_id))>
                 {{$brand->name}}
             </option>
         @endforeach
@@ -56,7 +57,7 @@
                 Choisir une largeur
             </option>
             @foreach ($largeurs as $largeur)
-                <option value="{{$largeur->id}}" @selected($largeur->id == old('largeur', $matelas->largeur->pluck('id')->implode('')))>
+                <option value="{{$largeur->id}}" @selected($largeur->id == old('largeur', $matelas->largeur_id))>
                     {{$largeur->value}}
                 </option>
             @endforeach
@@ -78,7 +79,7 @@
                 Choisir une longueur
             </option>
             @foreach ($longueurs as $longueur)
-                <option value="{{$longueur->id}}" @selected($longueur->id == old('longueur', $matelas->longueur->pluck('id')->implode('')))>
+                <option value="{{$longueur->id}}" @selected($longueur->id == old('longueur', $matelas->longueur_id))>
                     {{$longueur->value}}
                 </option>
             @endforeach

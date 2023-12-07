@@ -9,8 +9,8 @@ class Largeur extends Model
 {
     use HasFactory;
 
-    public function matelas()
-    {
-        return $this->belongsToMany(Matelas::class, 'matelas_largeurs');
-    }
+    // public function matelas()
+    // {
+    //     return $this->belongsToMany(Matelas::class, 'matelas_largeurs');
+    // }
 }

@@ -24,16 +24,16 @@ class Matelas extends Model
 
     public function brand()
     {
-        return $this->belongsToMany(Brand::class, 'matelas_brands');
+        return $this->belongsTo(Brand::class);
     }
 
     public function longueur()
     {
-        return $this->belongsToMany(Longueur::class, 'matelas_longueurs');
+        return $this->belongsTo(Longueur::class);
     }
 
     public function largeur()
     {
-        return $this->belongsToMany(Largeur::class, 'matelas_largeurs');
+        return $this->belongsTo(Largeur::class);
     }
 }

@@ -22,11 +22,13 @@ class BrandController extends Controller
      * Affiche les matelas d'une marque donnée
      */
     public function show($brand_name){
-        $matelas = Matelas::join('matelas_brands','matelas.id','matelas_brands.matelas_id')
-        ->join('brands', 'brands.id', 'matelas_brands.brand_id')
-        ->select('matelas.*')
-        ->where('brands.name', $brand_name)
-        ->get();
+        $brand = Brand::where('name', $brand_name)->first();
+        $matelas = Matelas::all()->where('brand_id',$brand->id);
+        // $matelas = Matelas::join('matelas_brands','matelas.id','matelas_brands.matelas_id')
+        // ->join('brands', 'brands.id', 'matelas_brands.brand_id')
+        // ->select('matelas.*')
+        // ->where('brands.name', $brand_name)
+        // ->get();
     
         foreach($matelas as $matela){
             $matela->discounted_price = Matelas::discount($matela->price, $matela->discount);
@@ -42,13 +44,15 @@ class BrandController extends Controller
     /**
      * Tri des matelas
      */
-    public function filter($brand, $filtre){
-        $matelas = Matelas::join('matelas_brands','matelas.id','matelas_brands.matelas_id')
-        ->join('brands', 'brands.id', 'matelas_brands.brand_id')
-        ->select('matelas.*')
-        ->where('brands.name', $brand)
-        ->get()
-        ->sortBy("$filtre");
+    public function filter($brand_name, $filtre){
+        $brand = Brand::where('name', $brand_name)->first();
+        $matelas = Matelas::all()->where('brand_id',$brand->id)->sortBy($filtre);
+        // $matelas = Matelas::join('matelas_brands','matelas.id','matelas_brands.matelas_id')
+        // ->join('brands', 'brands.id', 'matelas_brands.brand_id')
+        // ->select('matelas.*')
+        // ->where('brands.name', $brand)
+        // ->get()
+        // ->sortBy("$filtre");
 
         foreach($matelas as $matela){
             $matela->discounted_price = Matelas::discount($matela->price, $matela->discount);
@@ -57,7 +61,7 @@ class BrandController extends Controller
         return view('brand/show', [
             'matelas' => $matelas,
             "title" => 'Literie3000',
-            'brand' => $brand,
+            'brand' => $brand_name,
         ]);
     }
 }

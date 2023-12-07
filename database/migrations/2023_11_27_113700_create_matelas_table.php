@@ -18,6 +18,9 @@ return new class extends Migration
             $table->integer('discount')->nullable();
             $table->float('discounted_price', 6,2)->nullable();
             $table->string('image');
+            $table->foreignId('brand_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('largeur_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('longueur_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
