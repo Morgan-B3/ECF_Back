@@ -119,7 +119,7 @@
     </label>
     <div>
         <p><strong>Ancienne image : </strong>{{$matelas->image}}</p>
-        <input type="file" class="form-control rounded-lg @error('image') ring-2 ring-red-500 @enderror" name="image" id="image"> 
+        <input type="file" class="form-control @error('image') ring-2 ring-red-500 @enderror" name="image" id="image"> 
     </div>
     @error('image')
         <div></div>
