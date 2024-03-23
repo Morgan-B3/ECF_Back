@@ -117,7 +117,7 @@
     
 
     <label class="w-full text-xl font-bold flex justify-center" for="image">
-        Image (URL) * :
+        Image (PNG, JPG) * :
     </label>
     <input type="file" class="form-control  @error('image') ring-2 ring-red-500 @enderror" name="image" id="image"> 
     @error('image')

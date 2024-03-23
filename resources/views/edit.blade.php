@@ -115,7 +115,7 @@
 
 
     <label class="w-full text-xl font-bold flex justify-center" for="image">
-        Image (URL) * :
+        Image (PNG, JPG) * :
     </label>
     <div>
         <p><strong>Ancienne image : </strong>{{$matelas->image}}</p>
